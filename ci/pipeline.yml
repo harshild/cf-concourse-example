@@ -6,10 +6,18 @@ resources:
     uri: https://github.com/harshild/learning-springboot.git
 
 jobs:
-- name: test-oss-pipeline
+- name: Unit Tests
   public: false
   plan:
     - get: git-repo-test
       trigger: true
     - task: Run Tests
       file: git-repo-test/ci/task_run_tests.yml
+
+- name: Deploy
+  public: false
+  plan:
+    - get: git-repo-test
+      trigger: true
+    - task: Deploy to CF
+      file: git-repo-test/ci/task_deploy_cf.yml
