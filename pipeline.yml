@@ -15,12 +15,13 @@ jobs:
         image_resource:
           type: docker-image
           source: {repository: frekele/gradle}
+        inputs:
+        - name: git-repo-test
+          path: data/
         run:
           path: sh
           args:
           - -exec
           - |
-            mkdir aa
-            ls
-            pwd
-            gradle -version
+            cd data
+            gradle test
