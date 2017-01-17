@@ -2,13 +2,8 @@
 platform: linux
 image_resource:
   type: docker-image
-  source: {repository: frekele/gradle}
+  source: {repository: busybox}
 inputs:
-- name: git-repo-test
-  path: data/
+- name: resource-gist
 run:
-  path: gradle
-  args:
-    - cfPush
-    - {{cfUserName}}
-    - {{cfPassword}}]
+  path: data/ci/deploy.sh
