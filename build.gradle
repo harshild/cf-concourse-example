@@ -4,6 +4,8 @@ buildscript {
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.4.3.RELEASE")
+        classpath 'org.cloudfoundry:cf-gradle-plugin:1.1.2'
+
     }
 }
 
@@ -11,7 +13,7 @@ apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
-
+apply plugin: 'cloudfoundry'
 
 repositories {
     mavenCentral()
@@ -21,14 +23,19 @@ sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 dependencies {
-    // tag::jetty[]
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }
     compile("org.springframework.boot:spring-boot-starter-jetty")
-    // end::jetty[]
-    // tag::actuator[]
     compile("org.springframework.boot:spring-boot-starter-actuator")
-    // end::actuator[]
     testCompile("junit:junit")
+}
+
+def DEPLOY_APP_NAME = "test-oss-app";
+
+cloudfoundry {
+    target = "$System.env.CONCOURSE_API_URL"
+    space = "development"
+    uri = DEPLOY_APP_NAME+"."+"$System.env.CONCOURSE_APP_BASE_URL"
+    instances = 1
 }
