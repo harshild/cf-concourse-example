@@ -1,0 +1,10 @@
+---
+platform: linux
+image_resource:
+  type: docker-image
+  source: {repository: frekele/gradle}
+inputs:
+- name: git-repo-test
+  path: data/
+run:
+  path: data/ci/run-tests.sh
