@@ -10,5 +10,6 @@ jobs:
   public: false
   plan:
     - get: git-repo-test
+      trigger: true
     - task: Run Tests
-      file: data/ci/task_run_tests.yml
+      file: git-repo-test/ci/task_run_tests.yml
