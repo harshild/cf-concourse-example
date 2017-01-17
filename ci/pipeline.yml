@@ -2,6 +2,7 @@ resources:
 - name: git-repo-test
   type: git
   source:
+    branch: WIP-pipeline
     uri: https://github.com/harshild/learning-springboot.git
 
 jobs:
@@ -19,9 +20,4 @@ jobs:
         - name: git-repo-test
           path: data/
         run:
-          path: sh
-          args:
-          - -exec
-          - |
-            cd data
-            gradle test
+          path: data/ci/run-tests.sh
