@@ -1,17 +1,26 @@
+resources:
+- name: git-repo-test
+  type: git
+  source:
+    uri: https://github.com/harshild/learning-springboot.git
+
 jobs:
 - name: test-oss-pipeline
   public: false
-  type: git
-  source:
-    uri: git@github.com:harshild/learning-springboot.git
-    branch: master
   plan:
-  - task: hello-world
-    config:
-      platform: linux
-      image_resource:
-        type: docker-image
-        source: {repository: frekele/gradle}
-      run:
-        path: gradle
-        args: [test]
+    - get: git-repo-test
+    - task: hello hello
+      config:
+        platform: linux
+        image_resource:
+          type: docker-image
+          source: {repository: frekele/gradle}
+        run:
+          path: sh
+          args:
+          - -exec
+          - |
+            mkdir aa
+            ls
+            pwd
+            gradle -version
