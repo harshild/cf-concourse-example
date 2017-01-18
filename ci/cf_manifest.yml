@@ -1,4 +1,4 @@
 ---
 name: test-oss-app
 
-path: ../../get/git-repo-test/build/libs/*.jar
+path: ../../../get/git-repo-test/build/libs/*.jar
