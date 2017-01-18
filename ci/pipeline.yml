@@ -1,0 +1,29 @@
+resources:
+- name: git-repo-test
+  type: git
+  source:
+    branch: WIP-pipeline
+    uri: https://github.com/harshild/learning-springboot.git
+
+- name: deploy-cf
+  type: cf
+  source:
+    api: {{API_CF}}
+    username: {{USER_CF}}
+    password: {{PASSWORD_CF}}
+    organization: {{ORG_CF}}
+    space: {{SPACE_CF}}
+    skip_cert_check: false
+
+jobs:
+- name: Unit Tests
+  public: false
+  plan:
+    - get: git-repo-test
+      trigger: true
+    - task: Run Unit Tests
+      file: git-repo-test/ci/task_run_tests.yml
+    - put: deploy-cf
+      params:
+        manifest: git-repo-test/ci/cf_manifest.yml
+        path: artifacts/*.jar
