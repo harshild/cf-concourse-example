@@ -16,9 +16,9 @@ repositories {
     mavenCentral()
 }
 
-artifactId 'cf-concourse-example'
+archivesBaseName  ='cf-concourse-example'
 group = 'com.test'
-version = '1.0'
+version = '0.0.1'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
