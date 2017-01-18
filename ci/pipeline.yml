@@ -2,7 +2,7 @@ resources:
 - name: git-repo-test
   type: git
   source:
-    branch: WIP-pipeline
+    branch: master
     uri: https://github.com/harshild/learning-springboot.git
 
 - name: deploy-cf
