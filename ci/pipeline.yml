@@ -23,6 +23,14 @@ jobs:
       trigger: true
     - task: Run Unit Tests
       file: git-repo-test/ci/task_run_tests.yml
+
+- name: Build
+  public: false
+  plan:
+    - get: git-repo-test
+      trigger: true
+    - task: Build Code
+      file: git-repo-test/ci/task_buildcode.yml
     - put: deploy-cf
       params:
         manifest: git-repo-test/ci/cf_manifest.yml
