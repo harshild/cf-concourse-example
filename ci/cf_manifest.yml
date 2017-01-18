@@ -1,3 +1,6 @@
+---
+name: test-oss-app
+
 current_app_name: test-oss-app
 path: git-repo-test
 app_name: test-oss-app
