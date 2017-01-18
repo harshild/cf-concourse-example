@@ -24,4 +24,5 @@ jobs:
     - task: Run Tests
       file: git-repo-test/ci/task_run_tests.yml
     - put: deploy-cf
-      manifest: ci/cf_manifest.yml
+      params:
+        manifest: git-repo-test/ci/cf_manifest.yml

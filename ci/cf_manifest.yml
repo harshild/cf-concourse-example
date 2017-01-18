@@ -1,2 +1,3 @@
 current_app_name: test-oss-app
-path: build/libs/*.jar
+path: git-repo-test
+app_name: test-oss-app
