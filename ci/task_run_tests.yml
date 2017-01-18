@@ -5,6 +5,8 @@ image_resource:
   source: {repository: frekele/gradle}
 inputs:
 - name: git-repo-test
-  path: data/
+outputs:
+- name: artifacts
+
 run:
-  path: data/ci/run-tests.sh
+  path: git-repo-test/ci/run-unit-tests.sh

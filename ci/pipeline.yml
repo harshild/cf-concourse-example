@@ -16,13 +16,14 @@ resources:
     skip_cert_check: false
 
 jobs:
-- name: UnitTests
+- name: Unit Tests
   public: false
   plan:
     - get: git-repo-test
       trigger: true
-    - task: Run Tests
+    - task: Run Unit Tests
       file: git-repo-test/ci/task_run_tests.yml
     - put: deploy-cf
       params:
         manifest: git-repo-test/ci/cf_manifest.yml
+        path: artifacts/*.jar

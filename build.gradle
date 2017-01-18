@@ -16,6 +16,10 @@ repositories {
     mavenCentral()
 }
 
+artifactId 'cf-concourse-example'
+group = 'com.test'
+version = '1.0'
+
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
