@@ -5,12 +5,15 @@ resources:
     branch: WIP-pipeline
     uri: https://github.com/harshild/learning-springboot.git
 
-- name: resource-gist
-  type: git
+- name: deploy-cf
+  type: cf
   source:
-    branch: master
-    uri:
-    private_key:
+    api: {{API_CF}}
+    username: {{USER_CF}}
+    password: {{PASSWORD_CF}}
+    organization: {{ORG_CF}}
+    space: {{SPACE_CF}}
+    skip_cert_check: false
 
 jobs:
 - name: UnitTests
@@ -20,15 +23,5 @@ jobs:
       trigger: true
     - task: Run Tests
       file: git-repo-test/ci/task_run_tests.yml
-    - put: resource-gist
+    - put: deploy-cf
       params: {repository: git-repo-test/build/*.jar}
-
-- name: Deploy
-  serial: true
-  public: false
-  plan:
-    - get: resource-gist
-      trigger: true
-      passed: [UnitTests]
-    - task: Deploy to CF
-      file: git-repo-test/ci/task_deploy_cf.yml
