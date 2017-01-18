@@ -1,4 +1,4 @@
 ---
 name: test-oss-app
 
-path: build/libs/*.jar
+path: ../build/libs/*.jar
