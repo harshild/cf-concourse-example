@@ -18,7 +18,7 @@ repositories {
 
 
 archivesBaseName  ='cf-concourse-example'
-group = 'com.test'
+group = 'com.sample'
 version = '0.0.1'
 
 sourceCompatibility = 1.8
@@ -31,4 +31,5 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-jetty")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     testCompile("junit:junit")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 }

@@ -1,4 +1,4 @@
-package com.test;
+package com.sample;
 
 /**
  * Created by W18NM36 on 1/16/2017.
@@ -12,7 +12,7 @@ public class HelloController {
 
     @RequestMapping("/")
     public String index() {
-        return "Greetings!";
+        return "Greetings from Spring Boot!";
     }
 
 }

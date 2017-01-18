@@ -1,4 +1,4 @@
-package com.test;
+package com.sample;
 
 /**
  * Created by W18NM36 on 1/16/2017.
