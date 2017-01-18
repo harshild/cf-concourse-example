@@ -3,7 +3,7 @@ resources:
   type: git
   source:
     branch: master
-    uri: https://github.com/harshild/learning-springboot.git
+    uri: https://github.com/harshild/cf-concourse-example.git
 
 - name: deploy-cf
   type: cf
@@ -28,6 +28,7 @@ jobs:
   public: false
   plan:
     - get: git-repo-test
+      passed: [Unit Tests]
       trigger: true
     - task: Build Code
       file: git-repo-test/ci/task_buildcode.yml
